@@ -13,6 +13,12 @@ const sequelize = require("./config/connection");
 /* DECLARATIONS */
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+/* MIDDLEWARE */
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 //socket.io --- DECLARATION (ON) GOES HERE
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -21,14 +27,13 @@ const io = new Server(server, {
         methods: ["GET", "POST"]
     }
 });
-
-/* MIDDLEWARE */
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 io.on("connection", (socket) => {
-    console.log(socket.id);
+    console.log(`User Connected: ${socket.id}`);
+
+    socket.on("join_room", (data) => {
+        socket.join(data);
+        console.log(`User ${socket.id} joined room: ${data}`);
+    });
 
     socket.on("disconnect", () => {
         console.log("User Disconnect", socket.id);
@@ -44,5 +49,5 @@ if (process.env.NODE_ENV === "production") {
 
 /* ACTUAL SERVER :) */
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`LOCKED and LOADED on PORT ${PORT}`));
+    server.listen(PORT, () => console.log(`LOCKED and LOADED on PORT ${PORT}`));
 });
