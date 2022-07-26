@@ -1,10 +1,9 @@
-import io from "socket.io-client";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
-const socket = io.connect("http://localhost:3001");
 
-function Join() {
-
+function Join({ socket }) {
+  
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
 
@@ -29,7 +28,9 @@ function Join() {
         onChange={(event) => {
           setRoom(event.target.value);
         }} />
-      <button onClick={joinRoom}>Join</button>
+      <button onClick={joinRoom}>
+        <Link to={`/chat/${room}`} state={{ username: username }}>JOIN</Link>
+      </button>
     </div>
   );
 }
