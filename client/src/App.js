@@ -1,24 +1,30 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
+import io from "socket.io-client";
 import {
-  Join
+  Join,
+  Chat
 } from "./components/socket";
-import { BrowserRouter as Router, Routes, Route }
-  from 'react-router-dom';
-import Signup from './components/pages/signup';
+import {
+  Startup, Signup
+} from "./pages";
 
+const socket = io.connect("http://localhost:3001");
 
 function App() {
   return (
-    <>
-      
-      <Router>
+    <Router>
+      <>
+        <main>
         <Routes>
-          <Route path="/" element={<Signup />} />
-          <Route path={"/join"} element={<Join />} />
+          <Route index element={<Startup />} />
+          <Route path="join" element={<Join socket={socket}/>} />
+          <Route path="chat/:room" element={<Chat socket={socket}/>} />
         </Routes>
-      </Router>
-    </>
+        </main>
+      </>
+    </Router>
   )
 }
 
