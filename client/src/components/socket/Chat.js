@@ -9,6 +9,7 @@ function Chat({ socket }) {
     const { room } = useParams();
 
     const [currentMessage, setCurrentMessage] = useState("");
+    const [messageList, setMessageList] = useState([]);
     
     const sendMessage = async () => {
         if (currentMessage !== "") {
@@ -18,22 +19,39 @@ function Chat({ socket }) {
                 message: currentMessage
             };
 
-            console.log(messageData);
             await socket.emit("send_message", messageData);
+            setMessageList((list) => [...list, messageData]);
+            setCurrentMessage("");
         }
     }
 
     useEffect(() => {
         socket.on("receive_message", (data) => {
-            console.log(data);
+            setMessageList((list) => [...list, data]);
         })
     }, [socket]);
 
+    console.log(messageList);
     return (
         <div>
             <div className="chatHeader"></div>
                 <p>Live Chat</p>
-            <div className="chatBody"></div>
+            <div className="chatBody">
+            {messageList.map((messageContent) => {
+            return (
+              <div className="message">
+                <div>
+                  <div>
+                    <p>{messageContent.message}</p>
+                  </div>
+                  <div>
+                    <p>{messageContent.author}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+            </div>
             <div className="chatFooter">
                 <input 
                     type="text" 
