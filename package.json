@@ -24,7 +24,6 @@
     "concurrently": "^7.2.2"
   },
   "dependencies": {
-    "eslint": "^8.19.0",
-    "react-router-dom": "^6.3.0"
+    "eslint": "^8.19.0"
   }
 }
