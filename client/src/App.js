@@ -18,7 +18,8 @@ function App() {
       <>
         <main>
         <Routes>
-          <Route index element={<Startup />} />
+          <Route index element={<Signup />} />
+          <Route path="startup" element={<Startup />} />
           <Route path="join" element={<Join socket={socket}/>} />
           <Route path="chat/:room" element={<Chat socket={socket}/>} />
         </Routes>
