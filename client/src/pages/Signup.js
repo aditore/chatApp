@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Signup(){
 
 return (
@@ -13,6 +15,7 @@ return (
             <br/>
             <input type={"submit"} className={"submit-btn"} value={"Sign Up"} />
         </form>
+        <Link to="/startup">Link to CHAT</Link>
     </div> 
 )}
 
