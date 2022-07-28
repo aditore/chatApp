@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+:root {
+  --green: rgba(54, 96, 72, .3);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* signup page-----------------------------------------*/
+
+* {
+  margin: 0 auto;
+  background-color: aliceblue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signupFormContainer {
+  border: 2px solid gray;
+  padding: 18px;
+  border-radius: 6%;
+  width: 80%;
+  height: 50%;
   display: flex;
+  align-content: center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  background-color: var(--green);
 }
 
-.App-link {
-  color: #61dafb;
+.signupForm {
+  margin-top: 50px;
+  line-height: 5em;
+  background-color: rbga(var(--green), 0.4);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.signupFormHeader {
+  font-size: 39px;
+  margin-top: 3px;
+  background-color: rbga(var(--green), 0.4);
+}
+
+.username, .password {
+  height: 25px;
+  border-radius: 6%;
+}
+
+.username::placeholder, .password::placeholder {
+  text-align: center;
+  letter-spacing: .2rem;
+  color: black;
+  font-size: 12px;
+}
+
+.submit-btn {
+  height: 25px;
+  width: 90px;
+  letter-spacing: .1rem;
+}
+
+.iconPlaceholder {
+  background-color: black;
+  border: 2px solid black;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  position: relative;
+  top: 10px;
 }

@@ -7,7 +7,7 @@ import {
   Chat
 } from "./components/socket";
 import {
-  Startup
+  Startup, Signup
 } from "./pages";
 
 const socket = io.connect("http://localhost:3001");
