@@ -61,3 +61,21 @@
   position: relative;
   top: 10px;
 }
+
+/*Anthony CSS*/
+
+.funButtonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 0px);
+  border: none;
+}
+
+.linkToChat {
+  margin: auto;
+  padding: 10px;
+  color: white;
+  background-color: gray;
+  text-decoration: none;
+}

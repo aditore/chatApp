@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 
 function Startup() {
-    return ( 
-        <>
-            <Link to="/join">JOIN CHAT</Link>
-        </>
+    return (
+        <div className='funButtonDiv'> 
+            <Link className='linkToChat' to="/join">JOIN CHAT</Link>
+        </div>
     )
 }
 
