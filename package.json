@@ -7,7 +7,7 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
-    "start": "cd server && node server.js"
+    "start": "cd server && nodemon server.js"
   },
   "repository": {
     "type": "git",

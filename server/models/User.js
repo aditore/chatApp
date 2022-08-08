@@ -27,10 +27,7 @@ User.init(
             unique: true,
             allowNull: false,
             validate: {
-                validator: function(v) {
-                    return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(v);
-                },
-                message: "Please enter a valid e-mail!"
+                is: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
             }
         },
         password: {
