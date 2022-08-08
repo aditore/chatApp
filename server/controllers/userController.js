@@ -33,6 +33,7 @@ module.exports = {
     },
     //create user
     async createUser(req, res) {
+        console.log(req.body);
         const user = await User.create(req.body);
 
         if (!user) {
