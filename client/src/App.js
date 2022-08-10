@@ -7,7 +7,8 @@ import {
   Chat
 } from "./components/socket";
 import {
-  Startup, Signup
+  Signup,
+  Home
 } from "./pages";
 
 const socket = io.connect("http://localhost:3001");
@@ -19,7 +20,7 @@ function App() {
         <main>
         <Routes>
           <Route index element={<Signup />} />
-          <Route path="startup" element={<Startup />} />
+          <Route path="home" element={<Home />} />
           <Route path="join" element={<Join socket={socket}/>} />
           <Route path="chat/:room" element={<Chat socket={socket}/>} />
         </Routes>
