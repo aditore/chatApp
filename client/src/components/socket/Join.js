@@ -14,22 +14,24 @@ function Join({ socket }) {
   }
 
   return (
-    <div className="App">
-      <h3>Join Chat</h3>
-      <input 
+    <div className="joinDiv">
+      <h3 className="joinTitle">Join Chat</h3>
+      <input
+        className="joinInput" 
         type="text" 
         placeholder="username" 
         onChange={(event) => {
           setUsername(event.target.value);
         }}/>
-      <input 
+      <input
+        className="joinInput" 
         type="text" 
         placeholder="roomname"
         onChange={(event) => {
           setRoom(event.target.value);
         }} />
-      <button onClick={joinRoom}>
-        <Link to={`/chat/${room}`} state={{ username: username }}>JOIN</Link>
+      <button className="funButtonDiv" onClick={joinRoom}>
+        <Link className="linkToChat" to={`/chat/${room}`} state={{ username: username }}>JOIN</Link>
       </button>
     </div>
   );
