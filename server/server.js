@@ -7,7 +7,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 
 /* CONNECTION TO FILES */
-//const routes = require("./routes");
+const routes = require("./routes");
 const sequelize = require("./config/connection");
 //AUTH --- GOES HERE
 
@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//app.use(routes);
+app.use(routes);
 
 //socket.io --- DECLARATION (ON) GOES HERE
 const server = http.createServer(app);
