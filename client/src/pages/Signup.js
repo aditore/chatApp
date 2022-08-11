@@ -15,7 +15,7 @@ return (
             <br/>
             <input type={"submit"} className={"submit-btn"} value={"Sign Up"} />
         </form>
-        <Link to="/startup">Link to CHAT</Link>
+        <Link to="/home">Link to CHAT</Link>
     </div> 
 )}
 
