@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 function Navbar() {
     return (
@@ -8,7 +9,7 @@ function Navbar() {
                 <Link to="/home">JOIN</Link>
             </li>
             <li>
-                <Link to="/">LOGOUT</Link>
+                <Link onClick={Auth.logout} to="/">LOGOUT</Link>
             </li>
         </div>
     )
