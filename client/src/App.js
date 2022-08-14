@@ -8,6 +8,7 @@ import {
 } from "./components/socket";
 import {
   Signup,
+  Login,
   Home
 } from "./pages";
 
@@ -20,6 +21,7 @@ function App() {
         <main>
         <Routes>
           <Route index element={<Signup />} />
+          <Route path="login" element={<Login />} />
           <Route path="home" element={<Home />} />
           <Route path="join" element={<Join socket={socket}/>} />
           <Route path="chat/:room" element={<Chat socket={socket}/>} />
