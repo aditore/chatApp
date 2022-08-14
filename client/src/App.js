@@ -9,7 +9,8 @@ import {
 import {
   Signup,
   Login,
-  Home
+  Home,
+  JoinChat
 } from "./pages";
 
 const socket = io.connect("http://localhost:3001");
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="home" element={<Home />} />
+          <Route path="joinchat" element={<JoinChat />} />
           <Route path="join" element={<Join socket={socket}/>} />
           <Route path="chat/:room" element={<Chat socket={socket}/>} />
         </Routes>

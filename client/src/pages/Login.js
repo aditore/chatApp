@@ -11,13 +11,13 @@ function Login() {
         const { name, value } = event.target;
         setUserFormData({ ...userFormData, [name]: value });
     };
-    console.log(userFormData);
+    
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
             const response = await login(userFormData);
-
+            
             if (!response.ok) {
                 throw new Error("Something went wrong");
             }
@@ -65,7 +65,7 @@ function Login() {
             <br/>
             <input type={"submit"} className={"submit-btn"} value={"Login"} />
         </form>
-        <Link to={`/`}>Click Here to Signup!</Link>
+        <Link className="linkToLogin" to={`/`}>Click Here to Signup!</Link>
     </div> 
     )
 };

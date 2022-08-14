@@ -1,0 +1,15 @@
+import React from 'react';
+import { Navbar } from '../components';
+import { Join } from '../components/socket';
+
+
+function JoinChat() {
+    return (
+        <>
+            <Navbar />
+            <Join />
+        </>
+    )
+}
+
+export default JoinChat;

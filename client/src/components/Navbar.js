@@ -4,13 +4,18 @@ import Auth from "../utils/auth";
 
 function Navbar() {
     return (
-        <div>
-            <li>
-                <Link to="/home">JOIN</Link>
-            </li>
-            <li>
-                <Link onClick={Auth.logout} to="/">LOGOUT</Link>
-            </li>
+        <div className="navbarContainer">
+            <ul className="navbarList">
+                <li className="navbarListItem">
+                    <Link className="navbarLink" to="/home">HOME</Link>
+                </li>
+                <li className="navbarListItem">
+                    <Link className="navbarLink" to="/joinchat">JOIN</Link>
+                </li>
+                <li className="navbarListItem">
+                    <Link className="navbarLink" onClick={Auth.logout} to="/">LOGOUT</Link>
+                </li>
+            </ul>
         </div>
     )
 }

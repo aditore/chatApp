@@ -77,7 +77,7 @@ return (
             <br/>
             <input type={"submit"} className={"submit-btn"} value={"Sign Up"} />
         </form>
-        <Link to={`/login`}>Click Here to Login!</Link>
+        <Link className="linkToLogin" to={`/login`}>Click Here to Login!</Link>
     </div> 
 )}
 
