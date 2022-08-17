@@ -5,20 +5,22 @@ import Auth from "../utils/auth";
 
 function Login() {
     //state of form
-    const [userFormData, setUserFormData] = useState({ username: "", password: "" });
+    const [userLFormData, setUserLFormData] = useState({ username: "", password: "" });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setUserFormData({ ...userFormData, [name]: value });
+        setUserLFormData({ ...userLFormData, [name]: value });
     };
-    
+    console.log(userLFormData);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(userLFormData);
 
         try {
-            const response = await login(userFormData);
-            
+            const response = await login(userLFormData);
+            console.log(response);
             if (!response.ok) {
+                console.log(login(userLFormData));
                 throw new Error("Something went wrong");
             }
 
@@ -29,7 +31,7 @@ function Login() {
             console.log(err);
         }
 
-        setUserFormData({
+        setUserLFormData({
             username: "",
             password: ""
         });
@@ -47,7 +49,7 @@ function Login() {
                 placeholder="Username"
                 name="username"
                 onChange={handleInputChange}
-                value={userFormData.username}
+                value={userLFormData.username}
                 required 
             />
             <br/>
@@ -59,7 +61,7 @@ function Login() {
                 placeholder="Password"
                 name="password"
                 onChange={handleInputChange}
-                value={userFormData.password}
+                value={userLFormData.password}
                 required 
             />
             <br/>
