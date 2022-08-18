@@ -20,6 +20,8 @@ function Chats() {
     
     const [chatData, setChatData] = useState({});
     
+    const chatDataCheck = Object.keys(chatData).length;
+
     useEffect(() => {
 
         const getUserChats = async () => {
@@ -33,7 +35,7 @@ function Chats() {
                     throw new Error('Cannot load chats')
                 }
                 
-                const {allChats} = await response.json();
+                const allChats = await response.json();
                 
                 console.log(allChats);
                 setChatData(allChats);
@@ -43,14 +45,20 @@ function Chats() {
         }
         
         getUserChats();
-    });
+    }, [chatDataCheck]);
 
     console.log(chatData);
     return (
         <div>
-            <h2>
-                
-            </h2>
+            <ul className="ulChatTitles">
+                {chatData.map((titles) => {
+                    return (
+                        <li className="chatTitles" key={titles.title}>
+                            {titles.title}
+                        </li>
+                    );
+                })}
+            </ul>
         </div>
     )
 };
