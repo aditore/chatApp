@@ -8,10 +8,10 @@ module.exports = {
                 where: {
                     user_id: req.params.user_id
                 },
-                attributes: ["id", "text"],
+                attributes: ["id", "title"],
                 include: [{
                     model: User,
-                    attributes: ["username"]
+                    attributes: ["username", "id"]
                 }]
             });
 

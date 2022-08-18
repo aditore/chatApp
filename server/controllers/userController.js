@@ -21,7 +21,7 @@ module.exports = {
             where: { id: req.params.id },
             include: [{
                 model: Chats,
-                attributes: ["id", "text"]
+                attributes: ["id", "title"]
             }]
         });
 

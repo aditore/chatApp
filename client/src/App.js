@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route index element={<Signup />} />
           <Route path="login" element={<Login />} />
-          <Route path="home" element={<Home />} />
+          <Route path="home/:user_id" element={<Home />} />
           <Route path="joinchat" element={<JoinChat />} />
           <Route path="join" element={<Join socket={socket}/>} />
           <Route path="chat/:room" element={<Chat socket={socket}/>} />

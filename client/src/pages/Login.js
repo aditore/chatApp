@@ -6,12 +6,14 @@ import Auth from "../utils/auth";
 function Login() {
     //state of form
     const [userLFormData, setUserLFormData] = useState({ username: "", password: "" });
+    const [userData, setUserData] = useState({});
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUserLFormData({ ...userLFormData, [name]: value });
     };
-    console.log(userLFormData);
+
+    console.log(userData);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(userLFormData);
@@ -26,17 +28,17 @@ function Login() {
 
             const { token, userLogin } = await response.json();
             console.log(userLogin.username);
-            Auth.login(token);
+            setUserData(userLogin);
+            Auth.login(token, userLogin);
         } catch (err) {
             console.log(err);
         }
-
+        setUserData({});
         setUserLFormData({
             username: "",
             password: ""
         });
     };
-
     return (
         <div style={{ position: 'absolute', left: '50%', top: '50%',
     transform: 'translate(-50%, -50%)'}} className="signupFormContainer">

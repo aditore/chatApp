@@ -1,13 +1,12 @@
 import React from 'react';
-import { Navbar } from '../components';
-import { Join } from '../components/socket';
+import { Chats, Navbar } from '../components';
 
 
 function Home() {
     return (
         <>
             <Navbar />
-            <Join />
+            <Chats />
         </>
     )
 }

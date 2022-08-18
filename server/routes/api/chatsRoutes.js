@@ -4,6 +4,7 @@ const {
     createChat
 } = require("../../controllers/chatsController");
 
-router.route("/").get(getAllChats).post(createChat);
+router.route("/").post(createChat);
+router.route("/:user_id").get(getAllChats);
 
 module.exports = router;
