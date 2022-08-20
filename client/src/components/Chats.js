@@ -18,7 +18,7 @@ function Chats() {
         });
     };
     
-    const [chatData, setChatData] = useState({});
+    const [chatData, setChatData] = useState([]);
     
     const chatDataCheck = Object.keys(chatData).length;
 
@@ -38,7 +38,10 @@ function Chats() {
                 const allChats = await response.json();
                 
                 console.log(allChats);
-                setChatData(allChats);
+                let chatDataTitle = allChats.map((titles) => <li className="chatTitles" key={titles.id}>{titles.title}</li> )
+
+                setChatData(chatDataTitle);
+
             } catch (err) {
                 console.error(err);
             }
@@ -51,13 +54,7 @@ function Chats() {
     return (
         <div>
             <ul className="ulChatTitles">
-                {chatData.map((titles) => {
-                    return (
-                        <li className="chatTitles" key={titles.title}>
-                            {titles.title}
-                        </li>
-                    );
-                })}
+                {chatData}
             </ul>
         </div>
     )
