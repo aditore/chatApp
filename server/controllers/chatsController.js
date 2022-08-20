@@ -2,11 +2,11 @@ const { Chats, User } = require("../models");
 
 module.exports = {
     //get all chats by for user
-    async getAllChats(req, res) {
+    async getAllChats({ params }, res) {
         try {
             const allChats = await Chats.findAll({
                 where: {
-                    user_id: req.params.user_id
+                    user_id: params.user_id
                 },
                 attributes: ["id", "title"],
                 include: [{

@@ -41,3 +41,14 @@ export const createChat = (chatData) => {
     body: JSON.stringify(chatData)
   })
 };
+
+//GET USER CHATS
+export const getAllChats = (chatData) => {
+  return fetch(`/api/chats/${chatData}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(chatData)
+  });
+};
