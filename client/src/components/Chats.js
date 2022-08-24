@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
+import { getAllChats } from "../utils/API"
 
 function Chats() {
     const location = useLocation();
     const url = location.pathname;
-    const user_id = url.split("/").pop();
-    console.log(user_id);
-    
-    const getAllChats = (chatData) => {
-        return fetch(`/api/chats/${user_id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(chatData)
-        });
-    };
     
     const [chatData, setChatData] = useState([]);
     
@@ -27,7 +15,10 @@ function Chats() {
         const getUserChats = async () => {
             
             try {
-                const response = await getAllChats();
+                const user_idC = url.split("/").pop();
+                console.log(user_idC);
+
+                const response = await getAllChats(user_idC);
                 
                 console.log(response);
                 

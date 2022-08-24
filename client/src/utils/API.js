@@ -43,12 +43,11 @@ export const createChat = (chatData) => {
 };
 
 //GET USER CHATS
-export const getAllChats = (chatData) => {
-  return fetch(`/api/chats/${chatData}`, {
+export const getAllChats = (user_idC) => {
+  return fetch(`/api/chats/${user_idC}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(chatData)
   });
 };
