@@ -3,11 +3,11 @@ import { Navbar } from '../components';
 import { Join } from '../components/socket';
 
 
-function JoinChat() {
+function JoinChat({ socket }) {
     return (
         <>
             <Navbar />
-            <Join />
+            <Join socket={socket}/>
         </>
     )
 }

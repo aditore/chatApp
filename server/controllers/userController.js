@@ -18,7 +18,7 @@ module.exports = {
     async getSingleUser({ user = null, params }, res) {
         const findUser = await User.findOne({
             attributes: { exclude: ["password"] },
-            $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
+            $or: [{ id: user ? user.id : params.id }, { username: params.username}],
             include: [{
                 model: Chats,
                 attributes: ["id", "title"]
