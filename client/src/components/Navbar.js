@@ -6,9 +6,9 @@ import Auth from "../utils/auth";
 function Navbar() {
     const [userData, setUserData] = useState({});
 
+    console.log(userData);
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
-
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -33,7 +33,6 @@ function Navbar() {
 
     getUserData();
   }, [userDataLength]);
-    
     
     return (
         <div className="navbarContainer">
