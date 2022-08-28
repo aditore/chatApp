@@ -5,36 +5,40 @@ import Auth from "../utils/auth";
 
 function Login() {
     //state of form
-    const [userFormData, setUserFormData] = useState({ username: "", password: "" });
+    const [userLFormData, setUserLFormData] = useState({ username: "", password: "" });
+    const [userData, setUserData] = useState({});
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setUserFormData({ ...userFormData, [name]: value });
+        setUserLFormData({ ...userLFormData, [name]: value });
     };
-    
+
+    console.log(userData);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(userLFormData);
 
         try {
-            const response = await login(userFormData);
-            
+            const response = await login(userLFormData);
+            console.log(response);
             if (!response.ok) {
+                console.log(login(userLFormData));
                 throw new Error("Something went wrong");
             }
 
             const { token, userLogin } = await response.json();
             console.log(userLogin.username);
-            Auth.login(token);
+            setUserData(userLogin);
+            Auth.login(token, userLogin);
         } catch (err) {
             console.log(err);
         }
-
-        setUserFormData({
+        setUserData({});
+        setUserLFormData({
             username: "",
             password: ""
         });
     };
-
     return (
         <div style={{ position: 'absolute', left: '50%', top: '50%',
     transform: 'translate(-50%, -50%)'}} className="signupFormContainer">
@@ -47,7 +51,7 @@ function Login() {
                 placeholder="Username"
                 name="username"
                 onChange={handleInputChange}
-                value={userFormData.username}
+                value={userLFormData.username}
                 required 
             />
             <br/>
@@ -59,7 +63,7 @@ function Login() {
                 placeholder="Password"
                 name="password"
                 onChange={handleInputChange}
-                value={userFormData.password}
+                value={userLFormData.password}
                 required 
             />
             <br/>

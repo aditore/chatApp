@@ -143,3 +143,24 @@
 .navbarLink {
   text-decoration: none;
 }
+
+/* CHATS */
+
+.ulChatTitles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px
+}
+
+.chatTitles {
+  display: flex;
+  width: calc(60%);
+  height: 150px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: aliceblue;
+}
