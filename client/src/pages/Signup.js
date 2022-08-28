@@ -24,7 +24,7 @@ function Signup(){
 
             const { token, user } = await response.json();
             console.log(user.username);
-            Auth.login(token);
+            Auth.login(token, user);
         } catch (err) {
             console.log(err);
         }

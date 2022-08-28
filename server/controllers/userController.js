@@ -15,13 +15,13 @@ module.exports = {
         res.status(200).json(getAll);
     },
     //get single user
-    async getSingleUser(req, res) {
+    async getSingleUser({ user = null, params }, res) {
         const findUser = await User.findOne({
             attributes: { exclude: ["password"] },
-            where: { id: req.params.id },
+            $or: [{ id: user ? user.id : params.id }, { username: params.username}],
             include: [{
                 model: Chats,
-                attributes: ["id", "text"]
+                attributes: ["id", "title"]
             }]
         });
 

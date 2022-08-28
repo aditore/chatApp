@@ -14,7 +14,7 @@ import {
 } from "./pages";
 
 const socket = io.connect("http://localhost:3001");
-
+console.log(socket);
 function App() {
   return (
     <Router>
@@ -23,10 +23,10 @@ function App() {
         <Routes>
           <Route index element={<Signup />} />
           <Route path="login" element={<Login />} />
-          <Route path="home" element={<Home />} />
-          <Route path="joinchat" element={<JoinChat />} />
+          <Route path="home/:user_id" element={<Home />} />
+          <Route path="joinchat" element={<JoinChat socket={socket}/>} />
           <Route path="join" element={<Join socket={socket}/>} />
-          <Route path="chat/:room" element={<Chat socket={socket}/>} />
+          <Route path="chat/:room" element={<Chat socket={socket} />} />
         </Routes>
         </main>
       </>

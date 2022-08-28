@@ -13,7 +13,7 @@ Chats.init(
             primaryKey: true,
             autoIncrement: true
         },
-        text: {
+        title: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
