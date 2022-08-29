@@ -5,7 +5,7 @@ function Chat({ socket }) {
 
     const location = useLocation();
     const { username } = location.state;
-
+    
     const { room } = useParams();
 
     const [currentMessage, setCurrentMessage] = useState("");

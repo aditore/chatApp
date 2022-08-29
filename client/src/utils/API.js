@@ -1,7 +1,7 @@
 /*API*/
 //GET ME
-export const getMe = (token) => {
-  return fetch('/api/users/me', {
+export const getMe = (token, id) => {
+  return fetch(`/api/users/me/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`
