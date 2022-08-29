@@ -15,20 +15,21 @@ module.exports = {
         res.status(200).json(getAll);
     },
     //get single user
-    async getSingleUser({ user = null, params }, res) {
+    async getSingleUser({ params }, res) {
         const findUser = await User.findOne({
+            where: {
+                id: params.id
+            },
             attributes: { exclude: ["password"] },
-            $or: [{ id: user ? user.id : params.id }, { username: params.username}],
             include: [{
                 model: Chats,
-                attributes: ["id", "title"]
+                attributes: ["user_id", "id", "title"]
             }]
         });
 
         if (!findUser) {
             return res.status(400).json({ message: "User cannot be found!"});
         }
-
         res.status(200).json(findUser);
     },
     //create user

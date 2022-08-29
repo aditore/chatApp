@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getMe } from "../../utils/API";
 import Auth from "../../utils/auth";
 
-function Join({ socket }) {
+function Join({ socket, id }) {
 
   console.log(socket);
 
@@ -22,7 +22,7 @@ function Join({ socket }) {
           return false;
         }
 
-        const response = await getMe(token);
+        const response = await getMe(token, id);
 
         if (!response.ok) {
           throw new Error('something went wrong!');

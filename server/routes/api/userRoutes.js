@@ -11,6 +11,6 @@ router.route("/").get(getUsers).post(createUser);
 
 router.route("/login").post(login);
 
-router.route("/me").get(authMiddleware, getSingleUser);
+router.route("/me/:id").get(authMiddleware, getSingleUser);
 
 module.exports = router;
