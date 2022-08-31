@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { getMe } from "../../utils/API";
+import { createChat, getMe } from "../../utils/API";
 import Auth from "../../utils/auth";
 
 function Join({ socket, id }) {
 
   console.log(socket);
 
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState({});
   const [room, setRoom] = useState("");
+  const [chat, addChat] = useState({});
   //const [username, setUsername] = useState("");
   
   const userDataLength = Object.keys(userData).length;
-
+  console.log(room);
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -30,7 +31,7 @@ function Join({ socket, id }) {
 
         const user = await response.json();
         console.log(user.username);
-        setUserData(`${user.username}`);
+        setUserData(user);
       } catch (err) {
         console.error(err);
       }
@@ -38,28 +39,42 @@ function Join({ socket, id }) {
 
     getUserData();
   }, [userDataLength]);
-
+  
+  
   console.log(userData);
-  const joinRoom = () => {
-    if (userData !== "" && room !== "") {
-      console.log(socket);
-      socket.emit("join_room", room);
+  const joinRoom = async () => {
+    if (userData !== {} && room !== "") {
+      try {
+        console.log(socket);
+        const response = await createChat(chat);
+
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        
+        socket.emit("join_room", room);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 
   return (
     <div className="joinDiv">
       <h3 className="joinTitle">Join Chat</h3>
-      <h2 className='joinTitle'>{userData}</h2>
+      <h2 className='joinTitle'>{userData.username}</h2>
       <input
         className="joinInput" 
         type="text" 
-        placeholder="roomname"
+        placeholder="title"
+        name="title"
+        value={room}
         onChange={(event) => {
           setRoom(event.target.value);
+          addChat({ title: `${event.target.value}`, user_id: `${userData.id}` });
         }} />
       <button className="funButtonDiv" onClick={joinRoom}>
-        <Link className="linkToChat" to={`/chat/${room}`} state={{ username: userData }}>JOIN</Link>
+        <Link className="linkToChat" to={`/chat/${room}`} state={{ username: userData.username }}>JOIN</Link>
       </button>
     </div>
   );
