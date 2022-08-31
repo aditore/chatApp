@@ -33,19 +33,20 @@ function Chat({ socket }) {
 
     console.log(messageList);
     return (
-        <div>
-            <div className="chatHeader"></div>
-                <p>Live Chat</p>
+        <div className="messagePage">
+            <div className="chatHeader">
+                <p>Chats Data Name</p>
+            </div>
             <div className="chatBody">
             {messageList.map((messageContent) => {
             return (
               <div className="message">
                 <div>
-                  <div>
-                    <p>{messageContent.message}</p>
-                  </div>
-                  <div>
+                  <div className="authorBox">
                     <p>{messageContent.author}</p>
+                  </div>
+                  <div className="messageBox">
+                    <p>{messageContent.message}</p>
                   </div>
                 </div>
               </div>
