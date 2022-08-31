@@ -5,10 +5,9 @@ import Auth from "../utils/auth";
 
 function Navbar({ id }) {
     const [userData, setUserData] = useState({});
-  console.log(id);
-    console.log(userData);
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
+
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -26,7 +25,7 @@ function Navbar({ id }) {
         }
 
         const user = await response.json();
-        console.log(user);
+        
         setUserData(user);
       } catch (err) {
         console.error(err);

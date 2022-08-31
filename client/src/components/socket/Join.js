@@ -5,15 +5,13 @@ import Auth from "../../utils/auth";
 
 function Join({ socket, id }) {
 
-  console.log(socket);
-
   const [userData, setUserData] = useState({});
   const [room, setRoom] = useState("");
   const [chat, addChat] = useState({});
   //const [username, setUsername] = useState("");
   
   const userDataLength = Object.keys(userData).length;
-  console.log(room);
+  
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -30,7 +28,7 @@ function Join({ socket, id }) {
         }
 
         const user = await response.json();
-        console.log(user.username);
+        
         setUserData(user);
       } catch (err) {
         console.error(err);
@@ -41,11 +39,11 @@ function Join({ socket, id }) {
   }, [userDataLength]);
   
   
-  console.log(userData);
+  
   const joinRoom = async () => {
     if (userData !== {} && room !== "") {
       try {
-        console.log(socket);
+        
         const response = await createChat(chat);
 
         if (!response.ok) {

@@ -16,6 +16,7 @@ Chats.init(
         title: {
             type: DataTypes.TEXT,
             allowNull: false,
+            unique: true,
             validate: {
                 len: [1]
             }
