@@ -14,7 +14,7 @@ import {
 } from "./pages";
 
 const socket = io.connect("http://localhost:3001");
-console.log(socket);
+
 function App() {
   return (
     <Router>

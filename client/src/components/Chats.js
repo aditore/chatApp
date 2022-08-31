@@ -14,11 +14,9 @@ function Chats({ id }) {
             
             try {
                 
-                console.log(id);
 
                 const response = await getAllChats(id);
-                
-                console.log(response);
+            
                 
                 if(!response.ok) {
                     throw new Error('Cannot load chats')
@@ -26,7 +24,6 @@ function Chats({ id }) {
                 
                 const allChats = await response.json();
                 
-                console.log(allChats);
                 let chatDataTitle = allChats.map((titles) => <li className="chatTitles" key={titles.id}>{titles.title}</li> )
 
                 setChatData(chatDataTitle);
@@ -39,7 +36,6 @@ function Chats({ id }) {
         getUserChats();
     }, [chatDataCheck]);
 
-    console.log(chatData);
     return (
         <div>
             <ul className="ulChatTitles">

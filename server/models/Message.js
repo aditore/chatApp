@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Chats extends Model {
+class Message extends Model {
 
 }
 
-Chats.init(
+Message.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,10 +13,9 @@ Chats.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
+        text: {
             type: DataTypes.TEXT,
             allowNull: false,
-            unique: true,
             validate: {
                 len: [1]
             }
@@ -28,14 +27,21 @@ Chats.init(
                 key: "id"
             }
         },
+        chats_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "chats",
+                key: "id"
+            }
+        }
     },
     {
         sequelize,
-        timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "chats"
+        modelName: "message"
     }
 );
 
-module.exports = Chats;
+module.exports = Message;

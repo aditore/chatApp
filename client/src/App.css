@@ -164,3 +164,31 @@
   background-color: black;
   color: aliceblue;
 }
+
+/*MESSAGES*/
+
+.messagePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chatHeader {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.chatBody {
+  display: flex;
+  flex-direction: column;
+  border: solid gray;
+  width: calc(60%);
+  height: calc(100vh - 150px);
+  padding: 10px;
+  margin: 10px;
+}
+
+.message {
+  margin-top: auto;
+}
